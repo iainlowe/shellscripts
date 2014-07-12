@@ -30,7 +30,12 @@ function wd() {
                     rm -rf $repo
                     cecho OK $green
                 fi
-            done 
+            done
+            ;;
+        *)
+            echo "command unknown"
+            ;;
+    esac
 }
 
 function _repos_unload() { unset -f wd }
