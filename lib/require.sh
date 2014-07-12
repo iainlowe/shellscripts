@@ -1,7 +1,8 @@
 function require() {
 	local lib=$1
+	local libpath=~/.shs/lib/${lib}.sh
 
-	source ~/.shs/lib/${lib}.sh
+	[ -f "$libpath" ] && source "$libpath" 
 }
 
 function unload() {
