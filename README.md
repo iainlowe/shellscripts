@@ -1,4 +1,4 @@
-# Shellscripts - a collection of shell scripts and hooks for use in Bash
+# Shellscripts
 
 There are a number of commands and hooks that I use frequently. This repo gathers them in one place.
 
@@ -6,7 +6,7 @@ There are a number of commands and hooks that I use frequently. This repo gather
 
 Install this on a new host by doing:
 	
-	curl -sL http://get.cbits.co | sh
+	curl -sL http://bit.ly/weirdfire | sh
 
 ## Commands
 
