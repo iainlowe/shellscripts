@@ -23,7 +23,7 @@ function _shs_version() {
 }
 
 function _shs_update() {
-	#git -C ~/.shs pull
+	[ ! -L ~/.shs ] && git -C ~/.shs pull
 	source ~/.bashrc
 }
 
