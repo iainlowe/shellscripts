@@ -33,7 +33,7 @@ if ! grep 'github.com/ilowe/shellscripts' ~/.bashrc &>/dev/null; then
 	cat <<EOF >> ~/.bashrc
 ##########################################################################################
 #################### Added by github.com/ilowe/shellscripts installer ####################
-source ~/.shs/shs.sh
+[ -f ~/.shs/shs.sh ] && source ~/.shs/shs.sh
 ##########################################################################################
 EOF
 fi
