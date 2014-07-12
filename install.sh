@@ -1,6 +1,14 @@
 #!/bin/bash
 
-if [ -d ~/.shs ]; then
+force=
+
+for arg in "$@"; do
+	case $arg in
+		-f|--force) force=1;;
+	esac
+done
+
+if [ -z "$force" ] && [ -d ~/.shs ]; then
 	echo "Already installed. Use 'shs update' instead."
 	exit 5
 fi
