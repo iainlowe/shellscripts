@@ -1,15 +1,14 @@
-function _dirhook() {
-    # Skip execution if we haven't changed directories
-    [ "$SHS_DIRHOOKS_CWD" = `pwd` ] && return
-
+function dirhooks() {
     #if [ -f Dockerfile ]; then docker_hooks; else rmdocker; fi;
-    if [ -d .git ]; then require git; else unload git; fi;
-    
-    export SHS_DIRHOOKS_CWD=`pwd`
+    if [ -d .git ]; then require git; else unload git; fi
 }
 
-export PROMPT_COMMAND=dirhook
-# For other shells, maybe? Like zsh.. 
-export chpwd=dirhook
+function _dirhooks_unload() {
+	unset -f dirhooks
+}
 
-_dirhook
+export PROMPT_COMMAND=dirhooks
+# For other shells, maybe? Like zsh.. 
+export chpwd=dirhooks
+
+dirhooks

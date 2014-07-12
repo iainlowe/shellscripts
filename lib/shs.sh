@@ -19,11 +19,11 @@ function _shs_version() {
 
 	[ "$version" = "version" ] && version=
 
-	echo "shs ${version} (build `git -C ~/.shs log -n1 --oneline | cut -d' ' -f1`)"
+	cecho "shs ${version} (build `git -C ~/.shs log -n1 --oneline | cut -d' ' -f1`)" $grey
 }
 
 function _shs_update() {
-	git -C ~/.shs pull
+	#git -C ~/.shs pull
 	source ~/.bashrc
 }
 

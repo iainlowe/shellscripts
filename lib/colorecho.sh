@@ -6,6 +6,7 @@ blue='\E[34;1m'
 magenta='\E[35;1m'
 cyan='\E[36;1m'
 white='\E[37;1m'
+grey='\E[1;30m'
 
 function cecho() {
     local default_msg="No message passed."     # Doesn't really need to be a local variable.
