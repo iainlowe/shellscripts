@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=`git tag -l | head -n1 || echo unreleased`
+VERSION=`git -C ~/.shs tag -l | head -n1`
 
 source ~/.shs/lib/colorecho.sh
 
@@ -9,7 +9,7 @@ function shs() {
 	shift
 
 	case $cmd in
-		up|update) shs_update;;
+		up|update) _shs_update;;
 		*)
 			echo 'abort: unknown command' >&2
 			return 2
@@ -17,7 +17,7 @@ function shs() {
 	esac
 }
 
-function shs_update() {
+function _shs_update() {
 	git -C ~/.shs pull
 	source ~/.bashrc
 }
