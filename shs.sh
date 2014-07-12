@@ -9,12 +9,17 @@ function shs() {
 	shift
 
 	case $cmd in
-		r|reload) shs_reload;;
+		up|update) shs_update;;
 		*)
 			echo 'abort: unknown command' >&2
 			return 2
 			;;
 	esac
+}
+
+function shs_update() {
+	git -C ~/.shs pull
+	source ~/.bashrc
 }
 
 echo Shellscripts v$VERSION loaded
