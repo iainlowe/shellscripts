@@ -8,5 +8,5 @@ alias pull='git pull'
 alias tip='git log -n1 --oneline | cut -d" " -f1'
 
 function _git_unload() {
-	unalias add st ci diff d log push pull
+	unalias add st ci di log push pull
 }
