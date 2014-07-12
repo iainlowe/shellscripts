@@ -1,5 +1,5 @@
 function dirhooks() {
-    #if [ -f Dockerfile ]; then docker_hooks; else rmdocker; fi;
+    if [ -f Dockerfile ]; then require docker; else unload docker; fi;
     if [ -d .git ]; then require git; else unload git; fi
 }
 
