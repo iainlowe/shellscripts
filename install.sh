@@ -22,9 +22,13 @@ function check_bootstrap_deps() { # At a minimum we need a git command to start
 
 check_bootstrap_deps
 
-git clone http://github.com/ilowe/shellscripts ~/.shs
+[ -n "$force" ] && rm -rf ~/.shs
 
-if ! grep 'github.com/ilowe/shellscripts' ~/.bashrc; then
+echo -n "Installing Shellscripts... "
+git clone -q http://github.com/ilowe/shellscripts ~/.shs
+echo "done"
+
+if ! grep 'github.com/ilowe/shellscripts' ~/.bashrc &>/dev/null; then
 	echo '' >> ~/.bashrc
 	cat <<EOF >> ~/.bashrc
 ##########################################################################################
@@ -33,3 +37,5 @@ source ~/.shs/shs.sh
 ##########################################################################################
 EOF
 fi
+
+source ~/.bashrc
