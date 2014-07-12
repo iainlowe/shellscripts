@@ -2,8 +2,11 @@
 
 VERSION=`git -C ~/.shs tag -l | head -n1`
 
-source ~/.shs/lib/colorecho.sh
-source ~/.shs/lib/dirhooks.sh
-source ~/.shs/lib/cli.sh
+# Bootstrap load require library
+source ~/.shs/lib/require.sh
+
+require colorecho
+require dirhooks
+require cli
 
 echo Shellscripts v$VERSION loaded

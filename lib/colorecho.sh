@@ -20,4 +20,9 @@ function cecho() {
     tput sgr0                      # Reset to normal.
 
     return
-} 
+}
+
+function _colorecho_unload() {
+	unset -f cecho
+	unset black red green yellow blue magenta white
+}

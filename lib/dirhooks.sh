@@ -3,7 +3,7 @@ function _dirhook() {
     [ "$SHS_DIRHOOKS_CWD" = `pwd` ] && return
 
     #if [ -f Dockerfile ]; then docker_hooks; else rmdocker; fi;
-    #if [ -d .git ]; then git_hooks; else rmgit; fi;
+    if [ -d .git ]; then require git; else unload git; fi;
     
     export SHS_DIRHOOKS_CWD=`pwd`
 }
