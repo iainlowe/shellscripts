@@ -18,7 +18,7 @@ function _wd_each_repo() {
 function _wd_check() {
     local repo=$1
     
-    [ _wd_isclean $repo ] && cecho "$repo is clean" $green && return
+    _wd_isclean $repo && cecho "$repo is clean" $green && return
     
     cecho "$repo has changes:" $yellow
     git -C $repo status -s
