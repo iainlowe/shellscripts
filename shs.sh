@@ -2,7 +2,7 @@
 
 VERSION=`git tag -l | head -n1 || echo unreleased`
 
-source ~/.shs/lib/
+source ~/.shs/lib/colorecho.sh
 
 function shs() {
 	local cmd=$1
