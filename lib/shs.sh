@@ -17,6 +17,8 @@ function shs() {
 function _shs_version() {
 	local version=$(echo version `git -C ~/.shs tag -l | head -n1`)
 
+	[ "$version" = "version" ] && version=
+
 	echo "shs ${version} (build `git -C ~/.shs log -n1 --oneline | cut -d' ' -f1`)"
 }
 
