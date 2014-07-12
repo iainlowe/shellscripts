@@ -38,4 +38,6 @@ function wd() {
     esac
 }
 
-function _repos_unload() { unset -f wd }
+function _wd_unload() {
+    unset -f wd
+}
