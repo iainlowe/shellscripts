@@ -16,10 +16,12 @@ check_bootstrap_deps
 
 git clone http://github.com/ilowe/shellscripts ~/.shs
 
-echo '' >> ~/.bashrc
-cat <<EOF >> ~/.bashrc
+if ! grep 'github.com/ilowe/shellscripts' ~/.bashrc; then
+	echo '' >> ~/.bashrc
+	cat <<EOF >> ~/.bashrc
 ##########################################################################################
 #################### Added by github.com/ilowe/shellscripts installer ####################
 source ~/.shs/shs.sh
 ##########################################################################################
 EOF
+fi
