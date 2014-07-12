@@ -7,30 +7,43 @@ function _wd_isclean() {
     [ -z "$output" ]
 }
 
+function _wd_each_repo() {
+    local repodir=${REPO_DIR:-~/work}
+
+    find $repodir -maxdepth 2 -name .git -type d | sed 's/\/.git//g' | while read repo; do
+        $1 $repo
+    done
+}
+
+function _wd_check() {
+    local repo=$1
+    
+    [ _wd_isclean $repo ] && cecho "$repo is clean" $green && return
+    
+    cecho "$repo has changes:" $yellow
+    git -C $repo status -s
+}
+
+function _wd_clean() {
+    local repo=$1
+
+    if _wd_isclean $repo; then
+        cecho -n "Removing clean repo $repo ... " $green
+        rm -rf $repo
+        cecho OK $green
+    fi
+}
+
 function wd() {
     local repodir=${REPO_DIR:-~/work}
     local cmd=${1:-check}
 
     case $cmd in
         check)
-            find $repodir -maxdepth 2 -name .git -type d | sed 's/\/.git//g' | while read repo; do
-                output=`git -C $repo status -s`
-                if [ -z "$output" ]; then
-                    cecho "$repo is clean" $green
-                else
-                    cecho "$repo has changes:" $yellow
-                    git -C $repo status -s
-                fi 
-            done
+            _wd_each_repo "_wd_check"
             ;;
         clean)
-            find $repodir -maxdepth 2 -name .git -type d | sed 's/\/.git//g' | while read repo; do
-                if repo_isclean $repo; then
-                    cecho -n "Removing clean repo $repo ... " $green
-                    rm -rf $repo
-                    cecho OK $green
-                fi
-            done
+            _wd_each_repo "_wd_clean"
             ;;
         *)
             echo "command unknown"
