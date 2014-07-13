@@ -11,7 +11,7 @@ alias dpush='docker push $DOCKER_REPO'
 alias last='docker ps -lq'
 
 function _docker_unload() {
-    unalias build run shell start stop publish logs
+    unalias build run shell start stop dpush last
     DOCKER_REGISTRY=
     DOCKER_IMAGE=
     DOCKER_REPO=
