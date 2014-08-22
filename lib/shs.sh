@@ -15,7 +15,7 @@ function shs() {
 }
 
 function _shs_version() {
-	local version=$(echo version `git -C ~/.shs tag -l | tail -n1`)
+	local version=$(echo version `git --work-tree ~/.shs --git-dir ~/.shs/.git tag -l | tail -n1`)
 
 	[ "$version" = "version" ] && version=
 
@@ -23,7 +23,7 @@ function _shs_version() {
 }
 
 function _shs_update() {
-	[ ! -L ~/.shs ] && git -C ~/.shs pull
+	[ ! -L ~/.shs ] && git --work-tree ~/.shs --git-dir ~/.shs/.git pull
 	source ~/.bashrc
 }
 
